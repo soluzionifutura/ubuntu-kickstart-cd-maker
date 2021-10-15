@@ -39,6 +39,7 @@ chmod -R a+w $WORK
 cp ks.cfg $WORK/
 cp txt.cfg $WORK/isolinux/
 cp isolinux.cfg $WORK/isolinux/
+cp custom.seed $WORK/preseed/
 
 # magic mkiso incantation
 mkisofs -D -r -V “AUTOINSTALL” -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o $OUTPUT $WORK
