@@ -5,7 +5,8 @@
 #   md5sum $ISO > $ISO.MD5SUM
 # P.S.: Not working with live-server image !!!
 ISO=ubuntu-18.04.2-server-amd64.iso
-OUTPUT=autoinstall-ubuntu-18.04.2-server-amd64.iso
+# OUTPUT=autoinstall-ubuntu-18.04.2-server-amd64.iso
+OUTPUT=autoinstall_ubuntu.iso
 URL=http://releases.ubuntu.com/18.04.2/ubuntu-18.04.2-server-amd64.iso
 
 MOUNT=iso-mount-dir
@@ -44,9 +45,7 @@ cp custom.cfg $WORK/preseed/
 # magic mkiso incantation
 # mkisofs -D -r -V “AUTOINSTALL” -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o $OUTPUT $WORK
 
-genisoimage -r -J -b isolinux/isolinux.bin -c isolinux/boot.cat \                                                    
-            -no-emul-boot -boot-load-size 4 -boot-info-table \                                                           
-            -o $OUTPUT $WORK
+genisoimage -r -J -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o $OUTPUT $WORK
 
 isohybrid $OUTPUT
 
